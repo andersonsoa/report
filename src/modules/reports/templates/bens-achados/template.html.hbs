@@ -1,0 +1,59 @@
+<html>
+    <head>
+      <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+      <style>
+        {{asset "bens-achados-base.css" "utf8"}}
+
+        #header, #footer { padding: 0 !important; }
+      </style>
+    </head>
+    <body class="p-5">
+      {{component "header" }}
+      
+      <table class="">
+        <caption>
+          <h3>
+            Lista de bens
+          </h3>
+        </caption>
+      </table>
+
+        <table style="margin-top: 14px; page-break-inside: avoid;">
+          <thead class="">
+            <tr>
+              <th scope="col" class="">#</th>
+              <th scope="col" class="">Tombamento</th>
+              <th scope="col" class="">Localização</th>
+              <th scope="col" class="">Descrição sintética</th>
+              <th scope="col" class="">Descrição analítica</th>
+              <th scope="col" class="">Estado de conservação</th>
+              <th scope="col" class="">Classificação</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each bens.result}}
+              <tr>
+                <td scope="row" class="body-cell">{{sum @index 1}}</td>
+                {{#if tombamento}}
+                  <td class="body-cell">{{tombamento}}</td>
+                {{else}}
+                  <td class="text-center">-------</td>
+                {{/if}}
+                <td class="body-cell">{{departamento_sigla}} - {{departamento_nome}}</td>
+                <td class="body-cell">{{descricao_sintetica}}</td>
+                <td class="body-cell">{{descricao_analitica}}</td>
+                <td class="body-cell">{{situacao}}</td>
+                <td class="body-cell">{{classificacao}}</td>
+              </tr>
+            {{/each}}
+          <tr>
+            <td class="text-left" colspan="8">
+              <b>Quantidade de bens:</b> {{ bens.total }}
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+      </body>
+  </html>
