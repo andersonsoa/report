@@ -1,0 +1,55 @@
+<html>
+    <head>
+      <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+      <style>
+        {{asset "sintetico-base.css" "utf8"}}
+
+        #header, #footer { padding: 0 !important; }
+      </style>
+    </head>
+    <body class="p-5">
+      {{component "header" }}
+
+      <table class="">
+        <caption>
+          <h3>
+            Lista de bens
+          </h3>
+        </caption>
+
+        <thead class="">
+          <tr>
+            <th scope="col" class="">
+              #
+            </th>
+            <th scope="col" class="">
+              Departamento
+            </th>
+            <th scope="col" class="">
+              Sigla
+            </th>
+            <th scope="col" class="">
+              Quantidade
+            </th>
+            <th scope="col" class="">
+              VLC dos bens
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {{#each bens}}
+            <tr>
+              <th scope="row" class="body-cell">{{sum @index 1}}</th>
+              <th class="body-cell">{{nome}}</th>
+              <td class="body-cell">{{sigla}}</td>
+              <td class="body-cell">{{quantidade}}</td>
+              <td class="body-cell">{{valorContabilLiquido}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+
+    </body>
+  </html>

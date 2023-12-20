@@ -1,0 +1,90 @@
+<html>
+    <head>
+      <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+      <style>
+        {{asset "consolidado-base.css" "utf8"}}
+      </style>
+
+    </head>
+    <body class="p-5">
+      {{component "header" }}
+      
+      <table class="">
+        <caption>
+          <h3>
+            Lista de bens
+          </h3>
+        </caption>
+
+        <thead class="">
+          <tr>
+            <th scope="col" class="text-nowrap">
+              #
+            </th>
+            <!-- <th scope="col" class="text-nowrap">
+              Bem
+            </th> -->
+            <th scope="col" class="text-nowrap">
+              Tombamento
+            </th>
+            <th scope="col" class="text-nowrap">
+              Descrição sintética
+            </th>
+            <th scope="col" class="text-nowrap">
+              Departamento
+            </th>
+            <th scope="col" class="text-nowrap">
+              Estado de conservação
+            </th>
+            <th scope="col" class="text-nowrap">
+              Classificação
+            </th>
+            <th scope="col" class="text-nowrap">
+              Valor contábil líquido
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {{#each bens.data}}
+            <tr>
+              <td scope="row" class="body-cell">{{sum @index 1}}</td>
+              <!-- <td scope="row" class="body-cell">{{this.bemId}}</td> -->
+              <td class="body-cell">{{this.tombamento}}</td>
+              <td class="body-cell">{{this.descricaoSintetica}}</td>
+              <td class="body-cell">{{this.departamentoSigla}} - {{this.departamentoNome}}</td>
+              <td class="body-cell">{{this.situacaoBem}}</td>
+              <td class="body-cell">{{this.classificacaoBem}}</td>
+              <td class="body-cell text-right">{{moneyMask this.valorContabilLiquido}}</td>
+            </tr>
+            <tr style="margin-bottom: 12px;">
+              <td colspan="8">
+                <b>Observação</b>:
+                {{#if this.observacao}}
+                <p style="margin-top: 4px; font-size: 10px;">
+                  {{this.observacao}}
+                </p>
+                {{else}}
+                  <span>---------</span>
+                {{/if}}
+              </td>
+            </tr>
+          {{/each}}
+
+          <tr>
+            <td class="text-right" colspan="6">
+              <b>TOTAL</b>
+            </td>
+            <td class="text-right">
+                {{ moneyMask bens.totalValorContabilLiquido }}
+            </td>
+          </tr>
+          <tr>
+            <td class="text-left" colspan="8">
+              <b>Quantidade de bens:</b> {{ bens.total }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </body>
+  </html>
