@@ -25,3 +25,13 @@ export const getTemplateProvider = (
     inject: [getTemplateOptionsToken(options.name), JSREPORT_INSTANCE_TOKEN],
   };
 };
+
+export const getTemplatesProvider = (
+  options: JsReportTemplateOptions[],
+): Provider => {
+  return {
+    provide: getTemplateToken(),
+    useFactory,
+    inject: [getTemplateOptionsToken(), JSREPORT_INSTANCE_TOKEN],
+  };
+};

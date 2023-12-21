@@ -1,0 +1,51 @@
+<html>
+    <head>
+      <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+      <style>
+        {{asset "faltas-anual-base.css" "utf8"}}
+
+        #header, #footer { padding: 0 !important; }
+      </style>
+    </head>
+    <body class="p-5">
+      {{component "header" }}
+
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Matrícula</th>
+            <th width="200px">Nome</th>
+            <th width="200px">Lotação</th>
+            <th class="col" align="center">Janeiro</th>
+            <th class="col" align="center">Fevereiro</th>
+            <th class="col" align="center">Março</th>
+            <th class="col" align="center">Abril</th>
+            <th class="col" align="center">Maio</th>
+            <th class="col" align="center">Junho</th>
+            <th class="col" align="center">Julho</th>
+            <th class="col" align="center">Agosto</th>
+            <th class="col" align="center">Setembro</th>
+            <th class="col" align="center">Outubro</th>
+            <th class="col" align="center">Novembro</th>
+            <th class="col" align="center">Dezembro</th>
+            <th class="col" style="white-space: nowrap;" align="center">Total Anual</th>
+        </tr>
+        </thead>
+        <tbody>
+          {{#each servidores}}
+            <tr>
+              <td scope="col">{{matricula}}</td>
+              <td>{{nome}}</td>
+              <td>{{lotacao}}</td>
+              {{#each frequencia}}
+                <td>{{dias_faltados}}</td>
+              {{/each}}
+              <td class="col" style="white-space: nowrap;" align="center">{{total}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+
+    </body>
+  </html>

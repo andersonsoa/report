@@ -12,30 +12,30 @@ function setupTemplates(templateOptions: Array<TemplateOptions>) {
     assets: [
       {
         name: `${templateOption.name}-base.css`,
-        path: 'templates/common/base.css',
+        path: "templates/common/base.css",
       },
       {
         name: `${templateOption.name}-brasao.png`,
-        path: 'templates/common/brasao.png',
+        path: "templates/common/brasao.png",
       },
       ...(templateOption.assets ?? []),
     ],
     template: {
-      recipe: 'chrome-pdf',
-      engine: 'handlebars',
+      recipe: "chrome-pdf",
+      engine: "handlebars",
       content: `templates/${templateOption.name}/template.html${
-        templateOption.extension ?? '.hbs'
+        templateOption.extension ?? ".hbs"
       }`,
-      helpers: 'templates/common/helpers.js',
+      helpers: "templates/common/helpers.js",
       chrome: {
         launchOptions: {
-          args: ['--no-sandbox'],
+          args: ["--no-sandbox"],
         },
         printBackground: true,
-        marginTop: '1cm',
-        marginRight: '1cm',
-        marginBottom: '1cm',
-        marginLeft: '1cm',
+        marginTop: "1cm",
+        marginRight: "1cm",
+        marginBottom: "1cm",
+        marginLeft: "1cm",
         displayHeaderFooter: true,
         headerTemplate: '<span class="date" style="display: none;">',
         footerTemplate:
@@ -46,6 +46,6 @@ function setupTemplates(templateOptions: Array<TemplateOptions>) {
 }
 
 export const templates = setupTemplates([
-  { name: 'teste' },
-  { name: 'teste-2' },
+  { name: "teste" },
+  { name: "faltas-anual" },
 ]);

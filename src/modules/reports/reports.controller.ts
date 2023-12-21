@@ -1,21 +1,19 @@
 import {
   Body,
   Controller,
-  Header,
   HttpCode,
-  Param,
   Post,
-  Query,
   Res,
   StreamableFile,
 } from "@nestjs/common";
 import { Response } from "express";
 import { InjectJsrTemplate, JsReportTemplateService } from "src/lib";
+import { ReportDTO } from "src/modules/reports/dto/report.dto";
 
 @Controller("reports")
 export class ReportsController {
   constructor(
-    @InjectJsrTemplate("teste")
+    @InjectJsrTemplate()
     readonly reportService: JsReportTemplateService,
   ) {}
 
@@ -23,14 +21,16 @@ export class ReportsController {
   @HttpCode(200)
   async report(
     @Res({ passthrough: true }) res: Response,
-    @Body() data: any,
-    @Query() params: any,
+    @Body() body: ReportDTO,
   ) {
     res.set({
       "Content-Type": "application/pdf; charset=utf-8",
     });
 
-    const result = await this.reportService.getStream({ name: params.name });
+    const result = await this.reportService.getStream(
+      body.templateName,
+      body.data,
+    );
 
     return new StreamableFile(result.content);
   }

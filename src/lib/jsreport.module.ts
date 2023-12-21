@@ -1,17 +1,20 @@
-import { DynamicModule, Module } from '@nestjs/common';
-import { JSREPORT_ROOT_OPTIONS_TOKEN } from './constants';
-import { JsReportInstanceOptions } from './interfaces/instance.options';
+import { DynamicModule, Module } from "@nestjs/common";
+import { JSREPORT_ROOT_OPTIONS_TOKEN } from "./constants";
+import { JsReportInstanceOptions } from "./interfaces/instance.options";
 import {
   getComponentOptionsToken,
   getComponentToken,
   getTemplateOptionsToken,
   getTemplateToken,
-} from './helpers/token.helper';
-import { getJsReportInstanceProvider } from './providers/instance.provider';
-import { JsReportTemplateOptions } from './interfaces/template.options';
-import { getTemplateProvider } from './providers/template.provider';
-import { JSREPORT_INSTANCE_TOKEN } from './constants';
-import { getComponentProvider } from 'src/lib/providers/component.provider';
+} from "./helpers/token.helper";
+import { getJsReportInstanceProvider } from "./providers/instance.provider";
+import { JsReportTemplateOptions } from "./interfaces/template.options";
+import {
+  getTemplateProvider,
+  getTemplatesProvider,
+} from "./providers/template.provider";
+import { JSREPORT_INSTANCE_TOKEN } from "./constants";
+import { getComponentProvider } from "src/lib/providers/component.provider";
 
 @Module({})
 export class JsReportModule {
@@ -41,6 +44,20 @@ export class JsReportModule {
         getTemplateProvider(options),
       ],
       exports: [getTemplateToken(options.name)],
+    };
+  }
+
+  static registerTemplates(options: JsReportTemplateOptions[]): DynamicModule {
+    return {
+      module: JsReportModule,
+      providers: [
+        {
+          provide: getTemplateOptionsToken(),
+          useValue: options,
+        },
+        getTemplatesProvider(options),
+      ],
+      exports: [getTemplateToken()],
     };
   }
 
