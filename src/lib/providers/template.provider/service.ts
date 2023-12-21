@@ -174,13 +174,13 @@ export class JsReportTemplateService {
     this.templateInitialized = true;
   }
 
-  async render(data = {}, pdf = false) {
+  async render(data = { name: null }, pdf = false) {
     await this.initialize();
 
     const renderOpts = {
-      options: { reportName: this.options.name },
+      options: { reportName: data.name ?? this.options.name },
       template: {
-        name: this.options.name,
+        name: data.name ?? this.options.name,
         engine: this.options.template.engine,
         recipe: this.options.template.recipe,
         unoconv: undefined,
@@ -204,7 +204,7 @@ export class JsReportTemplateService {
     return result as JsReportResult;
   }
 
-  async getStream(data = {}, options: JsReportRenderOptions = { pdf: false }) {
+  async getStream(data = { name: null }, options: JsReportRenderOptions = { pdf: false }) {
     const { pdf } = options;
 
     const result = await this.render(data, pdf);

@@ -1,5 +1,5 @@
 <header class="flex flex-col justify-center items-center">
-  <img src="{{asset "bens-serviveis-brasao.png" "dataURI"}}" />
+  <img src="{{asset "teste-brasao.png" "dataURI"}}" />
   <p>Governo do Estado de Rondônia</p>
   <p>Relatório de Inventário</p>
 </header>
@@ -7,41 +7,7 @@
 <table class="cabecalho">
   <caption>
     <h3>
-      {{ titulo }}
+      TITULO
     </h3>
   </caption>
-
-  <tbody>
-    <tr>
-      <th scope="col" colspan="3">Unidade Gestora: {{ unidade.sigla }} - {{ unidade.nome }}</th>
-    </tr>
-    <tr>
-      <td scope="col" colspan="3" align="center"><b>Tipo:</b> {{ inventarioTipo.nome }}</td>
-    </tr>
-    <tr>
-      <td scope="col"><b>Data de emissão:</b><br> {{ currentDate }}</td>
-      <td scope="col"><b>Data de homologação:</b><br> {{ formatDate homologado }}</td>
-      <td scope="col"><b>Período:</b><br> {{ formatDate periodoInicial }} até {{ formatDate periodoFinal }}</td>
-    </tr>
-    <tr >
-      <td scope="col" colspan="2"><b>Presidente da comissão:</b><br> {{ presidente.usuario.pessoaFisica.pessoa.nome }} ({{ cpfMask presidente.usuario.pessoaFisica.cpf }})</td>
-      <td scope="col" colspan="1"><b>Número da Portaria da Comissão:</b><br> {{ numeroPortaria }}</td>
-    </tr>
-    <tr >
-      <td scope="col" colspan="3">
-        <b>Membros da comissão: </b>
-        {{#each inventarioMembros }}
-          <p>
-            {{ toUppercase usuario.pessoaFisica.pessoa.nome }} ({{ cpfMask usuario.pessoaFisica.cpf }})
-          </p>
-        {{/each}}
-      </td>
-    </tr>
-    <tr >
-      <td scope="col" colspan="3">
-        <b>Observação: </b>
-        {{ observacao }}
-      </td>
-    </tr>
-  </tbody>
 </table>

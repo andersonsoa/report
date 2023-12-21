@@ -1,13 +1,13 @@
-import { Provider } from '@nestjs/common';
-import { JSREPORT_INSTANCE_TOKEN } from '../../constants';
-import type JsReport from 'jsreport-core';
+import { Provider } from "@nestjs/common";
+import { JSREPORT_INSTANCE_TOKEN } from "../../constants";
+import type JsReport from "jsreport-core";
 import {
   getTemplateToken,
   getTemplateOptionsToken,
-} from '../../helpers/token.helper';
+} from "../../helpers/token.helper";
 
-import { JsReportTemplateService } from './service';
-import { JsReportTemplateOptions } from 'src/lib/interfaces/template.options';
+import { JsReportTemplateService } from "./service";
+import { JsReportTemplateOptions } from "src/lib/interfaces/template.options";
 
 const useFactory = async (
   options: JsReportTemplateOptions,

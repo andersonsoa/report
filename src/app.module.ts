@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import Joi from 'joi';
 import { ConfigModule } from '@nestjs/config';
 import { ReportsModule } from './modules/reports/reports.module';
-import { JsReportModule } from 'src/lib';
+import { JsReportModule, JsReportTemplateService } from 'src/lib';
 
 @Module({
   imports: [

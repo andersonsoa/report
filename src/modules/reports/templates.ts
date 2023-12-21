@@ -46,12 +46,6 @@ function setupTemplates(templateOptions: Array<TemplateOptions>) {
 }
 
 export const templates = setupTemplates([
-  { name: 'consolidado' },
-  { name: 'bens-achados' },
-  { name: 'sintetico' },
-  { name: 'bens-serviveis' },
-  { name: 'bens-inserviveis' },
-  { name: 'contas-contabeis' },
-  { name: 'bens-nao-localizados' },
-  { name: 'acervo-fotografico' },
+  { name: 'teste' },
+  { name: 'teste-2' },
 ]);
